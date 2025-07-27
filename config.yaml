@@ -1,0 +1,25 @@
+# Configuration file for run_analysis.py
+
+paths:
+  nvd_data_dir: "data/"
+  exploitdb_csv: "exploitdb/files_exploits.csv"
+  log_output: "data/logs.csv"
+  report_output: "outputs/risk_report.md"
+  plot_output: "outputs/top_risky_hosts.png"
+  model_dir: "models/"
+
+simulation:
+  num_assets: 100
+  num_cve_samples: 2000
+
+email:
+  # --- !! FILL IN YOUR GMAIL CREDENTIALS HERE !! ---
+  # IMPORTANT: Use a Google App Password, not your regular password.
+  sender: "your_email@gmail.com"
+  password: "YOUR_APP_PASSWORD_HERE"
+  recipient: "recipient_email@example.com"
+
+### THESE ARE COMMENTED IN CASE YOU NEED TO REVERT. SCRIPT WILL NOT RUN WITHOUT WORKING CREDS OR THIS PLACEHOLDER ###
+  # sender: "your_email@gmail.com"
+  # password: "YOUR_APP_PASSWORD_HERE"
+  # recipient: "recipient_email@example.com"

@@ -1,0 +1,27 @@
+# Ignore Python virtual environments
+.venv/
+env/
+
+# Ignore Jupyter notebooks and checkpoints
+*.ipynb
+.ipynb_checkpoints/
+
+# Ignore output, reports, and test folders
+outputs/
+archive/
+*.pdf
+*.html
+*.png
+*.jpg
+*.jpeg
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Ignore personal or local-only folders
+notebooks/
+.DS_Store
+.vscode/
+
