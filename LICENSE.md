@@ -1,7 +1,7 @@
 # Custom License: CVEReapeR
-*Custom License for CVEReapeR-H2O-Risk0Intel*
 
-Copyright (c) 2025 Mark Cyber
+Copyright (c) 2025 MarkCyber
+*Custom License for CVEReapeR-H2O-Risk0Intel*
 
 Permission is hereby granted to any individual or organization to use, modify, and distribute this software for **non-commercial purposes only**, including personal, educational, and research use, subject to the following conditions:
 
