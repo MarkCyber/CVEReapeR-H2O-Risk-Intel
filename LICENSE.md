@@ -22,4 +22,4 @@ Permission is hereby granted to any individual or organization to use, modify, a
 
 For commercial inquiries or licensing, contact the author.
 
-© 2025 Mark Cyber. All rights reserved.
+© 2025 MarkCyber. All rights reserved.
