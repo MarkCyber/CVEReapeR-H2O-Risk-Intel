@@ -1,4 +1,4 @@
-# CVEReaper: H2O Risk Intel Pipeline
+# CVEReapeR: An H2Oai Risk Intel Pipeline
 
 ![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)
 ![License: Custom](https://img.shields.io/badge/License-Custom-blue.svg)
