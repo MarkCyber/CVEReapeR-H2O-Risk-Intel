@@ -57,7 +57,9 @@ The final report shows prioritized CVEs with model explanations and visuals:
 
 ### Top 5 Riskiest Hosts
 
-![Top 5 Riskiest Hosts](outputs/top_risky_hosts.png)
+#Top 5 Riskiest Hosts:
+*a chart showing those 5 hosts here*
+
 
 ### Example CVE Prediction
 
