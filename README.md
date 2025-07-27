@@ -110,7 +110,7 @@ Outputs are saved in the `outputs/` directory.
 
 -  [NVD CVE JSONs (2019–2025)](https://nvd.nist.gov/vuln/data-feeds)  
 -  [CISA Known Exploited Vulnerabilities (KEV)](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)  
--  [ExploitDB](https://exploitdb.com)
+-  [ExploitDB](https://www.exploit-db.com)
 
 All data used is publicly available, and usage complies with public/open data standards.
 
