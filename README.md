@@ -57,7 +57,6 @@ The final report shows prioritized CVEs with model explanations and visuals:
 
 ### Top 5 Riskiest Hosts
 
-Top 5 Riskiest Hosts:
 *a chart showing those 5 hosts here*
 
 
