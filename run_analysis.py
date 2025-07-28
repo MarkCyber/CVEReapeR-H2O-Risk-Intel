@@ -198,7 +198,7 @@ def generate_report(best_model, df_model, hf, config):
         if row['exposed_to_internet']: actions.append("If patching is delayed, restrict network access.")
         return " ".join(actions)
 
-    # --- NEW: Get Variable Importance from the best model ---
+    # Get Variable Importance from the best model 
     varimp_df = best_model.varimp(use_pandas=True)
     varimp_table = varimp_df[['variable', 'percentage']].to_markdown(index=False)
 
