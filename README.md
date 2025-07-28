@@ -16,7 +16,7 @@ ELI5 version: Give your smart AI friend a bunch of hacker crime reports and long
 ## Project structure:
 
 ```
-CVEReapeR-H2O-Risk-Intel/
+CVEReapeR-ThreatOpsAI/
 │
 ├── data/            # CVE data (NVD JSONs, CISA KEV CSV, logs)
 ├── exploitdb/       # ExploitDB exploit metadata (CSV)
