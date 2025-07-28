@@ -1,5 +1,5 @@
 
-# CVEReapeR: An H2Oai Cybersecurity Risk Intel Pipeline
+# CVEReapeR: An H2Oai Cybersecurity Threat Intel Pipeline
 
 ![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)
 ![License: Custom](https://img.shields.io/badge/License-Custom-blue.svg)
@@ -103,8 +103,8 @@ The final report shows prioritized CVEs with model explanations and visuals:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/markcyber/cvereaper-h2o-risk-intel.git
-cd cvereaper-h2o-risk-intel
+git clone https://github.com/markcyber/cvereaper-threatopsai
+cd cvereaper-threatopsai
 ```
 
 ### 2. Install Dependencies
