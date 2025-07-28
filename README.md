@@ -123,6 +123,8 @@ All data used is publicly available, and usage complies with public/open data st
 - Trained model files in `models/` are optional; you can remove or regenerate them  
 - You can simulate log data or plug in real enterprise logs (CSV format)
 
+> _This project was developed with assistance from Gemini (for code) and ChatGPT (for documentation)._
+
 ---
 
 ## License
