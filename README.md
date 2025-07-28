@@ -1,5 +1,5 @@
 
-# CVEReapeR: An H2Oai Cybersecurity Threat Intel Pipeline
+# CVEReapeR: An H2Oai Threat Intel Pipeline
 
 ![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)
 ![License: Custom](https://img.shields.io/badge/License-Custom-blue.svg)
@@ -164,6 +164,6 @@ See the [LICENSE](./LICENSE.md) file for full details.
 ## Author
 
 Made with ❤️ by **markcyber**  
-Special focus on red teaming, cyber threat intelligence, and ML-based exploit prediction.
+Special focus on red teaming, cybersecurity threat intelligence, and ML-based exploit prediction.
 
 > _This project was developed with assistance from gemini._
