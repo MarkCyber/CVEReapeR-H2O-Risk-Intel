@@ -128,7 +128,7 @@ All data used is publicly available, and usage complies with public/open data st
 ## License
 
 This project is licensed under a custom non-commercial license.  
-See the [LICENSE](./LICENSE.txt) file for full details.
+See the [LICENSE](./LICENSE.md) file for full details.
 
 
 ---
