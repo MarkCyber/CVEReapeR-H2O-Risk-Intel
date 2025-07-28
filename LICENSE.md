@@ -8,7 +8,7 @@ Permission is hereby granted to any individual or organization to use, modify, a
 
 1. **Commercial Use Requires Permission and Payment**:
    - Commercial use, including but not limited to resale, sublicensing, bundling with commercial offerings, or providing access to this software as part of a paid service or product, is **prohibited** without prior written permission and a commercial licensing agreement with the author.
-   - To request a commercial license, please contact: [your email or GitHub]
+   - To request a commercial license, please contact: MarkCyber
 
 2. **Attribution**:
    - Any use, modification, or redistribution must include the original copyright notice and this license.
