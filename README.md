@@ -98,7 +98,7 @@ pip install -f https://h2o-release.s3.amazonaws.com/h2o/latest_stable_Py.html h2
 nano config.yaml
 ```
 
-### 3. Run the Pipeline
+### 4. Run the Pipeline
 
 ```bash
 python run_analysis.py
