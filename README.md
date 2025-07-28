@@ -64,7 +64,7 @@ CVEReapeR was built with defenders in mind: analysts, threat hunters, and vulner
   
 ---
 
-## 🩸Red Team Use Cases 🩸
+## 🩸Red Team Use Cases🩸
 
 While CVEReapeR was initially designed for blue teams, its output can still be valuable for offensive teams simulating real world adversaries.
 
