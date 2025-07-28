@@ -2,7 +2,7 @@
 
 Copyright (c) 2025 MarkCyber
 
-*Custom License for CVEReapeR-H2O-Risk-Intel*
+*Custom License for CVEReapeR-ThreatOpsAI*
 
 Permission is hereby granted to any individual or organization to use, modify, and distribute this software for **non-commercial purposes only**, including personal, educational, and research use, subject to the following conditions:
 
