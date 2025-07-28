@@ -5,7 +5,7 @@
 ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
 
-An end-to-end machine learning pipeline for red-team–style CVE risk analysis. This tool ingests vulnerability data (including NVD CVEs, CISA KEV, ExploitDB), simulates or parses log data, and uses H2O AutoML to predict and prioritize the most dangerous vulnerabilities in your environment.
+An end to end machine learning pipeline for CVE risk analysis. This tool takes in vulnerability data (such as NVD CVEs, CISA KEV, ExploitDB), simulates or parses log data, and then uses H2O's AutoML feature to predict and prioritize the most dangerous vulnerabilities in your environment.
 
 ---
 
