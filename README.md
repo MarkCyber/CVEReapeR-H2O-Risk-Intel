@@ -1,9 +1,9 @@
+
 # CVEReapeR: An H2Oai Risk Intel Pipeline
 
 ![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)
 ![License: Custom](https://img.shields.io/badge/License-Custom-blue.svg)
 ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
-
 
 An end to end machine learning pipeline for CVE risk analysis. This tool takes in vulnerability data (such as NVD CVEs, CISA KEV, ExploitDB), simulates or parses log data (depending on if you have real logs to input), and then uses H2O's AutoML feature to predict and prioritize the most dangerous vulnerabilities in your environment.
 
@@ -51,6 +51,32 @@ While CVEReapeR is functional, it is also a work in progress. The goal of CVERea
 
 ---
 
+## 💧Blue Team Use Cases💧
+
+CVEReapeR was built with defenders in mind: analysts, threat hunters, and vulnerability managers who need to understand their security posture fast.
+
+### Defensive Applications:
+
+- **Triage automation:** Prioritize vulnerabilities based on exploitability, asset exposure, and log evidence.
+- **Risk reduction:** Contextual recommendations to aid in patch decisions along with network segmentation.
+- **Reporting:** Share clean markdown reports or trigger email alerts for stakeholders.
+- **Threat Hunting:** Use log parsing and asset simulation to enrich vulnerability findings.
+  
+---
+
+## 🩸Red Team Use Cases🩸
+
+While CVEReapeR was initially designed for blue teams, its output can still be valuable for offensive teams simulating real world adversaries.
+
+### Offensive Applications:
+
+- **Scenario planning:** Identify critical CVEs to use in assumed breach or post-exploitation.
+- **Exploit path prioritization:** Rank vulnerable hosts by exploitability and service context.
+- **Target selection for emulation:** Pinpoint high-value targets for red team scenarios.
+- **Payload strategy:** Leverage exploit metadata to focus efforts on high-impact vulnerabilities.
+
+---
+
 ## Example Output
 
 The final report shows prioritized CVEs with model explanations and visuals:
@@ -58,7 +84,6 @@ The final report shows prioritized CVEs with model explanations and visuals:
 ### Top 5 Riskiest Hosts
 
 *a chart showing those 5 hosts here*
-
 
 ### Example CVE Prediction
 
@@ -107,7 +132,7 @@ Outputs are saved in the `outputs/` directory.
 
 ---
 
-##  Data Sources
+## Data Sources
 
 -  [NVD CVE JSONs (2019–2025)](https://nvd.nist.gov/vuln/data-feeds)  
 -  [CISA Known Exploited Vulnerabilities (KEV)](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)  
@@ -130,7 +155,6 @@ All data used is publicly available, and usage complies with public/open data st
 This project is licensed under a custom non-commercial license.  
 See the [LICENSE](./LICENSE.md) file for full details.
 
-
 ---
 
 ## Author
@@ -139,4 +163,3 @@ Made with ❤️ by **markcyber**
 Special focus on red teaming, cyber threat intelligence, and ML-based exploit prediction.
 
 > _This project was developed with assistance from gemini._
-
