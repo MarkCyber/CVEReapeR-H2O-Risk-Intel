@@ -43,7 +43,7 @@ While CVEReapeR is functional, it is also a work in progress. The goal of CVERea
 
 ## Technologies Used
 
-- **Machine Learning:** H2O.ai (AutoML), GBM, *maybe* xgboost
+- **Machine Learning:** H2O.ai (AutoML), GBM, xgboost
 - **Data Handling:** Pandas, NumPy, YAML, JSON  
 - **Visualization:** Matplotlib, Seaborn  
 - **Explainability:** Feature importance and rule-based attribution  
