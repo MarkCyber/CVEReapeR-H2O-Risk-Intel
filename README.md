@@ -8,7 +8,7 @@
 An end to end machine learning pipeline for CVE risk analysis. This tool takes in vulnerability data (such as NVD CVEs, CISA KEV, ExploitDB), simulates or parses log data (depending on if you have real logs to input), and then uses H2O's AutoML feature to predict and prioritize the most dangerous vulnerabilities in your environment.
 
 
-ELI5 version: Give your smart AI friend a bunch of hacker crime reports and long scary logs, then it goes “pew pew” on the bad guys (aka CVEs, a publicly disclosed "oops") so your systems don’t get robbed.
+👉🏼 ELI5 version: Give your smart AI friend a bunch of hacker crime reports and long scary logs, then it goes “pew pew” on the bad guys (aka CVEs, a publicly disclosed "oops") so your systems don’t get robbed.
 
 
 ---
