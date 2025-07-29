@@ -100,10 +100,11 @@ The final report shows prioritized CVEs with model explanations and visuals:
 
 ## Getting Started
 
-### 1. Clone the Repository
+### 1. Clone the Repository (git LFS required to install CVE list)
 
 ```bash
-git clone https://github.com/markcyber/cvereaper-threatopsai
+git lfs install
+git lfs clone https://github.com/markcyber/cvereaper-threatopsai
 cd cvereaper-threatopsai
 ```
 
