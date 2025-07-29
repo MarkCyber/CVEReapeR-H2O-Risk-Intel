@@ -12,6 +12,12 @@ simulation:
   num_assets: 100
   num_cve_samples: 2000
 
+  reporting:
+  risk_thresholds:
+    critical: 0.90
+    high: 0.70
+    medium: 0.40
+
 email:
   # --- !! FILL IN YOUR GMAIL CREDENTIALS HERE !! ---
   # IMPORTANT: Use a Google App Password, not your regular password.
