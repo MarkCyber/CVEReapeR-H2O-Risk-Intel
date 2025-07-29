@@ -100,7 +100,8 @@ def simulate_data(df_cve, config):
     asset_records = []
     for i, asset in enumerate(asset_ids):
         assigned_cves = random.sample(sample_cves, k=random.randint(1, 4))
-        if exploitable_cves_list:
+        # Ensure some assets have a publicly exploitable CVE
+        if exploitable_cves_list and random.random() < 0.5:
             assigned_cves.append(random.choice(exploitable_cves_list))
         for cve in assigned_cves:
             asset_records.append({'asset_id': asset, 'hostname': f"host{i:03}.mil", 'owner': f"owner{random.randint(1, 10)}", 'cve_id': cve})
@@ -111,17 +112,38 @@ def simulate_data(df_cve, config):
     df_exposure = pd.DataFrame(exposure_records)
     df_assets['exposed_to_internet'] = df_assets['asset_id'].map(dict(zip(df_exposure['asset_id'], df_exposure['exposed_to_internet'])))
 
-    # Simulate Logs
+    # --- Start of Log Simulation Logic ---
     log_events = []
     for _, row in df_assets.iterrows():
-        if random.random() < 0.2:
+        # Only generate logs for a subset of vulnerabilities
+        if random.random() < 0.3:
             is_exploit = False
             cve_details = df_cve[df_cve['cve_id'] == row['cve_id']]
-            if not cve_details.empty and row['exposed_to_internet'] and cve_details.iloc[0]['base_score'] > 7.0:
-                if random.random() < 0.5:
+            
+            if not cve_details.empty and row['exposed_to_internet']:
+                cve_has_public_exploit = row['cve_id'] in exploitable_cves_list
+                base_score = cve_details.iloc[0]['base_score']
+                
+                # Set a high chance of exploit if a public exploit exists, otherwise lower
+                exploit_chance = 0.0
+                if cve_has_public_exploit:
+                    exploit_chance = 0.75  # 75% chance if public exploit exists
+                elif base_score > 8.0:
+                    exploit_chance = 0.25  # 25% chance for other criticals
+                
+                if random.random() < exploit_chance:
                     is_exploit = True
+
             event_type = 'exploit_attempt' if is_exploit else random.choice(['scan', 'unauthorized_access', 'dos'])
-            log_events.append({'timestamp': datetime.now() - timedelta(days=random.randint(0, 30)), 'asset_id': row['asset_id'], 'cve_id': row['cve_id'], 'event_type': event_type, 'source_ip': f"10.{random.randint(1, 254)}.{random.randint(1, 254)}.{random.randint(1, 254)}"})
+            log_events.append({
+                'timestamp': datetime.now() - timedelta(days=random.randint(0, 30)),
+                'asset_id': row['asset_id'],
+                'cve_id': row['cve_id'],
+                'event_type': event_type,
+                'source_ip': f"10.{random.randint(1, 254)}.{random.randint(1, 254)}.{random.randint(1, 254)}"
+            })
+    # --- End of Log Simulation Logic ---
+            
     df_logs = pd.DataFrame(log_events)
     df_logs.to_csv(config['paths']['log_output'], index=False)
     print(f" Generated {len(df_logs)} mock log events.")
@@ -178,25 +200,41 @@ def generate_report(best_model, df_model, hf, config):
         return "No simple path detected."
     attack_paths = df_model.groupby('asset_id').apply(find_attack_paths, include_groups=False)
     df_model['attack_path'] = df_model['asset_id'].map(attack_paths)
-    
+    print("\nAttack paths have been identified.")
+
     # Define Report Helper Functions
+    # Get risk thresholds from config
+    reporting_cfg = config.get('reporting', {})
+    thresholds = reporting_cfg.get('risk_thresholds', {'critical': 0.9, 'high': 0.7, 'medium': 0.4})
+
     def map_risk_level(score):
-        if score >= 0.90: return "Critical"
-        elif score >= 0.70: return "High"
-        elif score >= 0.40: return "Medium"
+        if score >= thresholds['critical']: return "Critical"
+        elif score >= thresholds['high']: return "High"
+        elif score >= thresholds['medium']: return "Medium"
         else: return "Low"
+
+    def natural_join(items):
+        """Joins a list of strings into a natural-sounding phrase."""
+        if not items: return ""
+        if len(items) == 1: return items[0]
+        if len(items) == 2: return f"{items[0]} and {items[1]}"
+        return ", ".join(items[:-1]) + f", and {items[-1]}"
+
     def generate_risk_explanation(row):
         reasons = []
         if row['has_public_exploit']: reasons.append("has a known public exploit")
         if row['exposed_to_internet']: reasons.append("is on an internet-exposed asset")
         if row['base_score'] >= 9.0: reasons.append("has a critical CVSS base score")
         if not reasons: return "Risk driven by other learned patterns."
-        return "High risk because it " + " and ".join(reasons) + "."
+        return "High risk because it " + natural_join(reasons) + "."
+        
     def generate_remediation(row):
         actions = ["Patch system to remediate this CVE."]
         if row['has_public_exploit']: actions[0] = "Patch IMMEDIATELY as a public exploit is available."
         if row['exposed_to_internet']: actions.append("If patching is delayed, restrict network access.")
         return " ".join(actions)
+
+    # --- End of Updated Section ---
 
     # Get Variable Importance from the best model 
     varimp_df = best_model.varimp(use_pandas=True)
@@ -228,10 +266,10 @@ def generate_report(best_model, df_model, hf, config):
         f.write(report_md)
     print(f"--- Markdown report saved to: {report_path} ---")
 
-        # Send Email
+    # Send Email
     email_cfg = config['email']
 
-    # Check if email sending is enabled
+    # Check if email sending is enabled in config.yaml
     if not email_cfg.get('enabled', True):
         print("\n--- Email skipped: Disabled in config.yaml. ---")
         return
@@ -241,7 +279,7 @@ def generate_report(best_model, df_model, hf, config):
     gmail_app_password = email_cfg['password']
 
     if "your_email" in sender_email or "YOUR_APP_PASSWORD" in gmail_app_password:
-        print("\n--- Email skipped: Placeholders not filled in config.yaml. ---")
+        print("\n--- Email skipped: fill config.yaml if you want to send email. ---")
         return
 
     msg = MIMEMultipart(); msg['Subject'] = f"Daily CVE Risk Report - {datetime.now().strftime('%Y-%m-%d')}"; msg['From'] = sender_email; msg['To'] = receiver_email
@@ -276,6 +314,7 @@ def main():
     # Shutdown H2O
     h2o.cluster().shutdown()
     print("\n--- Pipeline complete. H2O cluster shut down. ---")
+    print("\n--- Thanks for using CVEReapeR! https://github.com/markcyber ---")
 
 if __name__ == "__main__":
     main()
