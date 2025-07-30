@@ -98,6 +98,16 @@ The final report shows prioritized CVEs with model explanations and visuals:
 
 ---
 
+
+### System Dependencies
+
+This project requires `pandoc` for the report generation aspect, which can be installed via Homebrew:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install pandoc
+```
+
 ## Getting Started
 
 ### 1. Clone the Repository (git LFS required to install CVE list)
