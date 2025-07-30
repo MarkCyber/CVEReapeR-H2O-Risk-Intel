@@ -11,6 +11,7 @@ import json
 import glob
 import uuid
 import yaml
+import subprocess
 import smtplib
 import ssl
 import markdown
@@ -265,6 +266,13 @@ def generate_report(best_model, df_model, hf, config):
     with open(report_path, "w") as f:
         f.write(report_md)
     print(f"--- Markdown report saved to: {report_path} ---")
+    # Convert Markdown to HTML using Pandoc
+    html_output_path = os.path.splitext(report_path)[0] + ".html"
+    try:
+        subprocess.run(["pandoc", report_path, "-o", html_output_path], check=True)
+        print(f"--- HTML version of the report saved to: {html_output_path} ---")
+    except subprocess.CalledProcessError as e:
+        print(f"Error converting Markdown to HTML: {e}")
 
     # Send Email
     email_cfg = config['email']
